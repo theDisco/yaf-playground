@@ -114,9 +114,9 @@ final class Dispatcher
     }
 
     /**
-     * @param $view
+     * @param \Yaf\View_Interface $view
      *
-     * @return
+     * @return void
      */
     public function setView ( $view )
     {

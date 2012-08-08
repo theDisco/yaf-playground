@@ -1,7 +1,7 @@
 <?php
 class Bootstrap extends \Yaf\Bootstrap_Abstract
 {
-    public function _initConfig(\Yaf\Dispatcher $dispatcher)
+    public function _initConfig()
     {
         $arrConfig = \Yaf\Application::app()->getConfig();
         \Yaf\Registry::set('config', $arrConfig);
@@ -9,7 +9,7 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract
 
     public function _initRouter(\Yaf\Dispatcher $dispatcher)
     {
-        // var_dump(\Yaf\Application::app()->getConfig()->application->modules);
+        // \Yaf\Application::app()->getConfig()->application->modules;
         $dispatcher->getRouter()->addRoute(
             'name',
             new \Yaf\Route\Rewrite(
@@ -21,5 +21,11 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract
                 )
             )
         );
+    }
+
+    public function _initView(\Yaf\Dispatcher $dispatcher)
+    {
+        $twig = new \Afera\View\Twig();
+        $dispatcher->setView($twig);
     }
 }
