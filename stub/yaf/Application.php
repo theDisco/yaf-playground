@@ -1,4 +1,7 @@
 <?php
+
+namespace Yaf;
+
 final class Application
 {
     /**
@@ -69,7 +72,8 @@ final class Application
 
     /**
      * @static
-     * @return void
+     *
+     * @return \Yaf\Application
      */
     public static function app ()
     {
@@ -92,7 +96,7 @@ final class Application
     }
 
     /**
-     * @return void
+     * @return \Yaf\Config\Ini
      */
     public function getConfig ()
     {
