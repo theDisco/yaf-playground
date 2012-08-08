@@ -5,12 +5,12 @@ namespace Yaf;
 interface View_Interface
 {
     /**
-     * @param $name
-     * @param $value
+     * @param mixed $name
+     * @param mixed $value
      *
-     * @return
+     * @return void
      */
-    public function assign ( $name, $value );
+    public function assign ( $name = null, $value = null );
 
     /**
      * @param $tpl
@@ -18,7 +18,7 @@ interface View_Interface
      *
      * @return
      */
-    public function display ( $tpl, $tpl_vars );
+    public function display ( $tpl = null, $tpl_vars = null );
 
     /**
      * @param $tpl
@@ -26,17 +26,17 @@ interface View_Interface
      *
      * @return
      */
-    public function render ( $tpl, $tpl_vars );
+    public function render ( $tpl = null, $tpl_vars = null );
 
     /**
-     * @param $template_dir
+     * @param string $template_dir
      *
-     * @return
+     * @return void
      */
-    public function setScriptPath ( $template_dir );
+    public function setScriptPath ( $template_dir = null );
 
     /**
-     * @return
+     * @return string
      */
     public function getScriptPath ();
 }
