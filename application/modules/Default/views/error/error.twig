@@ -1,0 +1,6 @@
+<h2>{{ exception.getMessage() }}</h2>
+<p>
+    File: {{ exception.getFile() }}<br>
+    Line: {{ exception.getLine() }}
+</p>
+<pre>{{ exception.getTraceAsString() }}</pre>

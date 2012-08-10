@@ -1,21 +1,60 @@
 <?php
 
+// TODO: Document
+
 namespace Afera\View;
 
 class Twig implements \Yaf\View_Interface
 {
-    protected $_tpl_vars;
+    /**
+     * @var \Twig_Environment
+     */
+    protected $_twig;
 
-    protected $_tpl_dir;
+    protected $_vars = array();
+
+    protected $_path;
+
+    // TODO: Add some better exception handling and verbosity for the user
+    public function __construct()
+    {
+        $defaults = array(
+            'path' => APPLICATION_PATH . '/views',
+            'options' => array(
+                  'charset' => 'UTF-8',
+                  'debug' => 'true'
+            )
+        );
+        $twig = \Yaf\Registry::get(\Bootstrap::CONFIG_REGISTRY_KEY)->twig;
+        $options = $twig->options->toArray() + $defaults['options'];
+
+        $loader = new \Twig_Loader_Filesystem($twig->path);
+        $this->_twig = new \Twig_Environment($loader, $options);
+        $this->_twig->addGlobal('app', \Yaf\Application::app());
+
+        if ($twig->options->debug) {
+            $this->_twig->addExtension(new \Twig_Extension_Debug());
+        }
+    }
 
     public function __get($name)
     {
-        return $this->_tpl_vars[$name];
+        return $this->_vars[$name];
     }
 
     public function __set($name, $value)
     {
         $this->assign($name, $value);
+    }
+
+    public function __isset($key)
+    {
+        return ($this->_vars[$key] !== null);
+    }
+
+    public function __unset($key)
+    {
+        unset($this->_vars[$key]);
     }
 
     /**
@@ -26,39 +65,40 @@ class Twig implements \Yaf\View_Interface
      */
     public function assign ( $name = null, $value = null )
     {
-        $this->_tpl_vars[$name] = $value;
+        $this->_vars[$name] = $value;
     }
 
     /**
-     * @param $tpl
-     * @param $tpl_vars
+     * @param $name
+     * @param $value
      *
      * @return string
      */
-    public function display ( $tpl = null, $tpl_vars = null )
+    public function display ( $name = null, $value = null )
     {
-        return 'test';
+        echo $this->_twig->render($name, $this->_vars);
     }
 
     /**
-     * @param $tpl
-     * @param $tpl_vars
+     * @param $name
+     * @param $value
      *
      * @return string
      */
-    public function render ( $tpl = null, $tpl_vars = null )
+    public function render ( $name = null, $value = null )
     {
-        return 'test';
+        return $this->_twig->render($name, $this->_vars);
     }
 
     /**
-     * @param string $template_dir
+     * @param string $path
      *
      * @return void
      */
-    public function setScriptPath ( $template_dir = null )
+    public function setScriptPath ( $path = null )
     {
-        $test = '';
+        $this->_twig->getLoader()->addPath($path);
+        $this->_path = $path;
     }
 
     /**
@@ -66,17 +106,7 @@ class Twig implements \Yaf\View_Interface
      */
     public function getScriptPath ()
     {
-        $test = '';
-    }
-
-    function __construct ()
-    {
-        die(__METHOD__);
-    }
-
-    function __destruct ()
-    {
-        die(__METHOD__);
+        return $this->_path;
     }
 
 }

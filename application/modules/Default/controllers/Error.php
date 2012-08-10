@@ -1,7 +1,5 @@
 <?php
 
-use Afera\Test;
-
 class ErrorController extends \Yaf\Controller_Abstract
 {
     public function errorAction()
@@ -18,8 +16,6 @@ class ErrorController extends \Yaf\Controller_Abstract
 //        echo YAF_ERR_NOTFOUND_VIEW;
 //        echo YAF_ERR_CALL_FAILED;
 //        echo YAF_ERR_TYPE_ERROR;
-
-        $test = new Test();
 
         $this->_view->exception = $this->_request->getException();
     }

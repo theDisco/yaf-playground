@@ -89,7 +89,8 @@ abstract class Controller_Abstract
 
     /**
      * @final
-     * @return
+     *
+     * @return \Yaf\View_Interface
      */
     public final function getView ()
     {

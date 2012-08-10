@@ -34,7 +34,7 @@ final class Registry
      *
      * @param $name
      *
-     * @return
+     * @return mixed
      */
     public static function get ( $name )
     {
@@ -45,7 +45,7 @@ final class Registry
      *
      * @param $name
      *
-     * @return
+     * @return boolean
      */
     public static function has ( $name )
     {

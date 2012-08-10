@@ -146,7 +146,7 @@ final class Dispatcher
     }
 
     /**
-     * @return
+     * @return \Yaf\Request_Abstract
      */
     public function getRequest ()
     {
@@ -236,7 +236,7 @@ final class Dispatcher
     /**
      * @param $flag
      *
-     * @return
+     * @return void
      */
     public function throwException ( $flag )
     {
@@ -245,16 +245,16 @@ final class Dispatcher
     /**
      * @param $flag
      *
-     * @return
+     * @return void
      */
     public function catchException ( $flag )
     {
     }
 
     /**
-     * @param $plugin
+     * @param \Yaf\Plugin_Abstract $plugin
      *
-     * @return
+     * @return void
      */
     public function registerPlugin ( $plugin )
     {

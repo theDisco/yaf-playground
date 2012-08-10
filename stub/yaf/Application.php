@@ -50,7 +50,7 @@ final class Application
      * @param $config
      * @param $envrion
      */
-    public function __construct ( $config, $envrion )
+    public function __construct ( $config, $envrion = null )
     {
     }
 
@@ -110,7 +110,7 @@ final class Application
     }
 
     /**
-     * @return void
+     * @return \Yaf\Dispatcher
      */
     public function getDispatcher ()
     {
