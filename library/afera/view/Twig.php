@@ -15,6 +15,8 @@ class Twig implements \Yaf\View_Interface
 
     protected $_path;
 
+    protected $_config;
+
     // TODO: Add some better exception handling and verbosity for the user
     public function __construct()
     {
@@ -31,6 +33,8 @@ class Twig implements \Yaf\View_Interface
         $loader = new \Twig_Loader_Filesystem($twig->path);
         $this->_twig = new \Twig_Environment($loader, $options);
         $this->_twig->addGlobal('app', \Yaf\Application::app());
+
+        $this->_setLayout();
 
         if ($twig->options->debug) {
             $this->_twig->addExtension(new \Twig_Extension_Debug());
@@ -107,6 +111,16 @@ class Twig implements \Yaf\View_Interface
     public function getScriptPath ()
     {
         return $this->_path;
+    }
+
+    private function _setLayout()
+    {
+        $twig = \Yaf\Registry::get(\Bootstrap::CONFIG_REGISTRY_KEY)->twig;
+
+        if ($twig->layout_path !== null && $twig->layout !== null) {
+            $this->_twig->getLoader()->addPath($twig->layout_path);
+            $this->_twig->addGlobal('layout', $this->_twig->loadTemplate($twig->layout));
+        }
     }
 
 }
