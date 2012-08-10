@@ -5,6 +5,12 @@ namespace Route;
 class ModulePlugin extends \Yaf\Plugin_Abstract
 {
 
+    /**
+     * @param \Yaf\Request_Abstract $request
+     * @param \Yaf\Response_Abstract $response
+     *
+     * @return void
+     */
     public function routerStartup(\Yaf\Request_Abstract $request, \Yaf\Response_Abstract $response)
     {
         $dispatcher = \Yaf\Application::app()->getDispatcher();

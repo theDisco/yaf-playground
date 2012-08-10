@@ -51,7 +51,7 @@ final class Session implements \Iterator, \Traversable, \ArrayAccess, \Countable
 
     /**
      * @static
-     * @return
+     * @return \Yaf\Session
      */
     public static function getInstance ()
     {

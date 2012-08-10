@@ -11,13 +11,21 @@ class Twig implements \Yaf\View_Interface
      */
     protected $_twig;
 
+    /**
+     * @var array
+     */
     protected $_vars = array();
 
+    /**
+     * @var string
+     */
     protected $_path;
 
-    protected $_config;
-
-    // TODO: Add some better exception handling and verbosity for the user
+    /**
+     * TODO: Add some better exception handling and verbosity for the user
+     *
+     * @return \Afera\View\Twig
+     */
     public function __construct()
     {
         $defaults = array(
@@ -41,21 +49,41 @@ class Twig implements \Yaf\View_Interface
         }
     }
 
+    /**
+     * @param $name
+     *
+     * @return mixed
+     */
     public function __get($name)
     {
         return $this->_vars[$name];
     }
 
+    /**
+     * @param $name
+     * @param $value
+     *
+     * @return void
+     */
     public function __set($name, $value)
     {
         $this->assign($name, $value);
     }
 
+    /**
+     * @param $key
+     * @return boolean
+     */
     public function __isset($key)
     {
         return ($this->_vars[$key] !== null);
     }
 
+    /**
+     * @param $key
+     *
+     * @return void
+     */
     public function __unset($key)
     {
         unset($this->_vars[$key]);
@@ -113,6 +141,9 @@ class Twig implements \Yaf\View_Interface
         return $this->_path;
     }
 
+    /**
+     * @return void
+     */
     private function _setLayout()
     {
         $twig = \Yaf\Registry::get(\Bootstrap::CONFIG_REGISTRY_KEY)->twig;
