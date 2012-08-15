@@ -6,9 +6,14 @@ Testing space for yaf php extension
 Installation
 ============
 
+Following php modules have to be installed:
+
 ```
 pecl install yaf
+pecl install intl
 ```
+
+Following lines have to be added to the php.ini
 
 ```
 extension=yaf.so
@@ -20,9 +25,24 @@ yaf.action_prefer=0
 yaf.use_namespace=1
 ```
 
+Install composer if you want to enable support for twig
+
 ```
 curl -s https://getcomposer.org/installer | php
 php composer.phar install
+```
+
+If you want to use ResourceBundle go to the URL below, download ICU and extract it
+
+```
+http://site.icu-project.org/download
+```
+
+After that convert your bundle into res file
+
+```
+$ cd /path/to/icu/usr/local/bin
+$ export LD_LIBRARY_PATH=../lib && ./genrb /path/to/resource.txt -e UTF-8 -d /path/to/application/resources
 ```
 
 TODO

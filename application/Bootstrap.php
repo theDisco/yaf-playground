@@ -24,6 +24,8 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract
     public function _initPlugins(\Yaf\Dispatcher $dispatcher)
     {
         $dispatcher->registerPlugin(new \Route\ModulePlugin());
+        $dispatcher->registerPlugin(new \Intl\LocalePlugin());
+        $dispatcher->registerPlugin(new \Intl\ResourceBundlePlugin());
     }
 
     /**
