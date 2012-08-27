@@ -35,7 +35,7 @@ abstract class Controller_Abstract
     protected $_invoke_args;
 
     /**
-     * @var $_view
+     * @var \Yaf\View_Interface $_view
      */
     protected $_view;
 

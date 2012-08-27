@@ -89,9 +89,9 @@ final class Application
     /**
      * @param $bootstrap
      *
-     * @return void
+     * @return \Yaf\Application
      */
-    public function bootstrap ( $bootstrap )
+    public function bootstrap ( $bootstrap = null )
     {
     }
 
