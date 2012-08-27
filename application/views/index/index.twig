@@ -1,4 +1,11 @@
 {% extends layout %}
 {% block content %}
-    {{ hello }}
+    {{ hello }}<br>
+    <ul>
+        {% for user in users %}
+            <li>{{ user.name|e }}</li>
+        {% else %}
+            <li>There are no users</li>
+        {% endfor %}
+    </ul>
 {% endblock %}

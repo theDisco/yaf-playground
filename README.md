@@ -1,7 +1,16 @@
 yaf-playground
 ==============
 
-Testing space for yaf php extension
+Testing space for yaf php extension. Installation depends on following packages installable through
+packagist:
+
+```
+Twig/Twig
+Respect/Data
+Respect/Relational
+```
+
+Twig is used to provide layout option, Respect packages are used to provide the ORM.
 
 Installation
 ============
@@ -44,8 +53,3 @@ After that convert your bundle into res file
 $ cd /path/to/icu/usr/local/bin
 $ export LD_LIBRARY_PATH=../lib && ./genrb /path/to/resource.txt -e UTF-8 -d /path/to/application/resources
 ```
-
-TODO
-====
-
-* Integrate some lightweight ORM

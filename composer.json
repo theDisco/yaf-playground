@@ -1,5 +1,7 @@
 {
     "require": {
-        "twig/twig": "1.*"
+        "twig/twig": "1.*",
+        "Respect/Relational": "@dev",
+        "Respect/Data": "@dev"
     }
 }
